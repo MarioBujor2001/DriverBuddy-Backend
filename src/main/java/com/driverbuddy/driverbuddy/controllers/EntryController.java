@@ -38,4 +38,9 @@ public class EntryController {
         entryService.delete(id);
         return ResponseEntity.ok(id);
     }
+
+    @PutMapping("")
+    public ResponseEntity<?> updateEntry(@RequestBody Entry entry){
+        return ResponseEntity.ok(this.entryService.update(entry));
+    }
 }

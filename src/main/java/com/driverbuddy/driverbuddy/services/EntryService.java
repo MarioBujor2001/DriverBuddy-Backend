@@ -35,4 +35,17 @@ public class EntryService {
         assert entry != null;
         this.entryRepo.delete(entry);
     }
+
+    public Entry update(Entry entry){
+        Entry toUpdate = this.entryRepo.findByDate(entry.getDate()).orElse(null);
+        assert toUpdate != null;
+        toUpdate.setKm(entry.getKm());
+        toUpdate.setGasCons(entry.getGasCons());
+        toUpdate.setGasPrice(entry.getGasPrice());
+        toUpdate.setTipsIncome(entry.getTipsIncome());
+        toUpdate.setRidesIncome(entry.getRidesIncome());
+        toUpdate.setNoHours(entry.getNoHours());
+        toUpdate.setNoRides(entry.getNoRides());
+        return this.entryRepo.save(toUpdate);
+    }
 }
